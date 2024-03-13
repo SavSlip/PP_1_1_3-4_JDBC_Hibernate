@@ -17,9 +17,9 @@ public class Util {
             DriverManager.registerDriver(driver);           // для старых версий Java
             connection = DriverManager.getConnection(URL, LOGIN, PASSWORD);
             connection.setAutoCommit(false);
-            if (!connection.isClosed()) {
-                System.out.println("Connection OK");
-            }
+//            if (!connection.isClosed()) {
+//                System.out.println("Connection OK");
+//            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
