@@ -6,7 +6,6 @@ import jm.task.core.jdbc.util.Util;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.SQLSyntaxErrorException;
 import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
@@ -35,7 +34,7 @@ public class UserDaoJDBCImpl implements UserDao {
                     connection.close();
                 }
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                e.getStackTrace();
             }
         }
     }
@@ -58,7 +57,7 @@ public class UserDaoJDBCImpl implements UserDao {
                     connection.close();
                 }
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                e.getStackTrace();
             }
         }
 
