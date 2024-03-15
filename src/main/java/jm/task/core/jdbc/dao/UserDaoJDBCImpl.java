@@ -1,26 +1,24 @@
 package jm.task.core.jdbc.dao;
-
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
-    private final Connection connection = Util.getConnection();
-    private final String CREATE_USER_TABLE = "CREATE TABLE if not exists users (" +
+    private static final Connection connection = Util.getConnection();
+    private static final String CREATE_USER_TABLE = "CREATE TABLE if not exists users (" +
             "`id` INT NOT NULL AUTO_INCREMENT," +
             " `name` VARCHAR(255) NOT NULL," +
             " `lastname` VARCHAR(255) NOT NULL," +
             " `age` INT NOT NULL," +
             " PRIMARY KEY (`id`))";
-    private final String DROP_USER_TABLE = "DROP TABLE if exists users";
-    private final String SAVE_USER = "INSERT INTO users (name, lastname, age) values " +
+    private static final String DROP_USER_TABLE = "DROP TABLE if exists users";
+    private static final String SAVE_USER = "INSERT INTO users (name, lastname, age) values " +
             "(?, ?, ?)";
-    private final String REMOVE_USER_BY_ID = "DELETE FROM users WHERE id = ?";
-    private final String GET_ALL_USERS = "SELECT * FROM users";
-    private final String CLEAN_USERS_TABLE = "DELETE from users";
+    private static final String REMOVE_USER_BY_ID = "DELETE FROM users WHERE id = ?";
+    private static final String GET_ALL_USERS = "SELECT * FROM users";
+    private static final String CLEAN_USERS_TABLE = "DELETE from users";
 
 
     public UserDaoJDBCImpl() {
