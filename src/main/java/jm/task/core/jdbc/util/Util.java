@@ -1,5 +1,8 @@
 package jm.task.core.jdbc.util;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
@@ -21,5 +24,16 @@ public class Util {
             throw new RuntimeException(e);
         }
         return connection;
+    }
+
+    public static Configuration getConfiguration() {
+        return new Configuration()
+                .setProperty("hibernate.driver_class", "com.mysql.cj.jdbc.Driver()")
+                .setProperty("hibernate.connection.url", URL)
+                .setProperty("hibernate.connection.username", LOGIN)
+                .setProperty("hibernate.connection.password", PASSWORD)
+                .setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect")
+                .setProperty("hibernate.show_sql", "true")
+                .setProperty("hibernate.current_session_context_class", "thread");
     }
 }
