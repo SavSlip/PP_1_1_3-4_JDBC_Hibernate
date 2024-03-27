@@ -11,15 +11,14 @@ public class Util {
     private static final String PASSWORD = "root";
 
     public static Connection getConnection() {
-        Connection connection;
         try {
             Driver driver = new com.mysql.cj.jdbc.Driver(); // для старых версий Java
             DriverManager.registerDriver(driver);           // для старых версий Java
-            connection = DriverManager.getConnection(URL, LOGIN, PASSWORD);
+            Connection connection = DriverManager.getConnection(URL, LOGIN, PASSWORD);
             connection.setAutoCommit(false);
+            return connection;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return connection;
     }
 }
